@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherAPI</string>
+    <string name="type_city_here">Type City Here</string>
+    <string name="what_city_would_you_like_the_weather_for">What city would you like the weather for?</string>
+</resources>
