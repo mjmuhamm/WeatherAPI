@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity() {
             binding.description.text = "Desc: ${weatherInfo.weather[0].description}"
             binding.humidity.text = "Humidity: ${weatherInfo.main.humidity}"
             binding.windSpeed.text = "Wind Speed: ${weatherInfo.wind.speed}"
-            Glide.with(this).load(weatherInfo.weather[0].icon).placeholder(R.mipmap.ic_launcher).circleCrop().into(binding.iconUrl)
+            Glide.with(this).load("https://www.openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png").circleCrop().placeholder(R.mipmap.ic_launcher).into(binding.iconUrl)
+
         }
 
         viewModel.loading.observe(this) { isLoading ->
