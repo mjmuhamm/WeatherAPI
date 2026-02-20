@@ -1,3 +1,16 @@
+import java.util.Properties
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val apiKey: String = localProperties.getProperty("WEATHER_API_KEY") ?: ""
+
+
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -10,6 +23,7 @@ android {
         }
     }
 
+
     defaultConfig {
         applicationId = "com.example.weatherapi"
         minSdk = 24
@@ -18,10 +32,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "WEATHER_API_KEY", "\"$apiKey\"")
     }
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
