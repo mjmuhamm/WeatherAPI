@@ -1,15 +1,11 @@
 import java.util.Properties
 
 val localProperties = Properties()
-val localPropertiesFile = rootProject.file("local.properties")
 
-if (localPropertiesFile.exists()) {
-    localProperties.load(localPropertiesFile.inputStream())
+if (rootProject.file("local.properties").exists()) {
+    localProperties.load(rootProject.file("local.properties").inputStream())
 }
-
 val apiKey: String = localProperties.getProperty("WEATHER_API_KEY") ?: ""
-
-
 
 plugins {
     alias(libs.plugins.android.application)
